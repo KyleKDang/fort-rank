@@ -13,7 +13,8 @@ def create_database():
             country TEXT,
             region TEXT,
             image_url TEXT,
-            total_earnings INTEGER DEFAULT 0
+            total_earnings INTEGER DEFAULT 0,
+            player_url TEXT UNIQUE
         )
     ''')
 
