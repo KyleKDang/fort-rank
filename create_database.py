@@ -9,9 +9,8 @@ def create_database():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT UNIQUE NOT NULL,
             name TEXT,
-            age INTEGER,
+            date_of_birth DATE,
             country TEXT,
-            region TEXT DEFAULT 'EU',
             image_url TEXT DEFAULT 'https://www.esportsearnings.com/images/unknown_player.png',
             total_earnings INTEGER DEFAULT 0,
             player_url TEXT UNIQUE
@@ -22,9 +21,10 @@ def create_database():
         CREATE TABLE IF NOT EXISTS placements (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             player_id INTEGER,
-            date TEXT,
+            date DATE,
             place INTEGER,
             tournament TEXT,
+            region TEXT,
             earnings INTEGER,
             FOREIGN KEY (player_id) REFERENCES players(id)
         )
