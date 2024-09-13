@@ -7,17 +7,17 @@ def add_sample_players():
 
     # Define sample player data
     players = [
-        ('PeterBot', 'Peter Kata', '2007-06-20', 'USA', 643724, 'https://yt3.googleusercontent.com/PRIImuXVV9d-RHTDMebJZwxJMi41_6TLckYBsRTmeNvrD8_oo1zVgDPkAq1wxeNI1Fh7unHDqJE=s900-c-k-c0x00ffffff-no-rj'),
-        ('Queasy', 'Aleksa Cvetkovic', '2002-04-17', 'Serbia', 1195358, 'https://example.com/image2.jpg'),
-        ('Bugha', 'Kyle Giersdor', '', 'UK', 3000, 'https://example.com/image3.jpg'),
-        ('player4', 'Bob Brown', '2002-11-30', 'Australia', 6000, 'https://example.com/image4.jpg'),
+        ('PeterBot', 'Peter Kata', '2007-06-20', 'United States', 643724),
+        ('Queasy', 'Aleksa Cvetkovic', '2002-04-17', 'Serbia', 1195358),
+        ('Bugha', 'Kyle Giersdorf', '2002-12-30', 'United States', 3740425),
+        ('Mero', 'Matthew Faitel', '2004-09-18', 'Canada', 1014450),
     ]
 
     # Insert sample data into the players table
     try:
         cursor.executemany('''
-            INSERT INTO players (username, name, date_of_birth, country, total_earnings, image_url)
-            VALUES (?, ?, ?, ?, ?, ?)
+            INSERT INTO players (username, name, date_of_birth, country, total_earnings)
+            VALUES (?, ?, ?, ?, ?)
         ''', players)
 
         # Commit changes

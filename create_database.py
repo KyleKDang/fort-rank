@@ -5,7 +5,6 @@ def create_database():
     cursor = conn.cursor()
 
     cursor.execute('DROP TABLE IF EXISTS players')
-    cursor.execute('DROP TABLE IF EXISTS placements')
 
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS players (
@@ -15,20 +14,8 @@ def create_database():
             date_of_birth DATE DEFAULT NULL,
             country TEXT DEFAULT NULL,
             total_earnings INTEGER NOT NULL,
-            image_url TEXT DEFAULT 'https://www.esportsearnings.com/images/unknown_player.png'
-        )
-    ''')
-
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS placements (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            player_id INTEGER NOT NULL,
-            date DATE NOT NULL,
-            place INTEGER NOT NULL,
-            tournament TEXT NOT NULL,
-            region TEXT NOT NULL,
-            earnings INTEGER NOT NULL,
-            FOREIGN KEY (player_id) REFERENCES players(id)
+            rank INTEGER NOT NULL UNIQUE,
+            image_url TEXT
         )
     ''')
 
