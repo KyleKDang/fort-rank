@@ -11,8 +11,8 @@ def create_database():
             name TEXT,
             age INTEGER,
             country TEXT,
-            region TEXT,
-            image_url TEXT,
+            region TEXT DEFAULT 'EU',
+            image_url TEXT DEFAULT 'https://www.esportsearnings.com/images/unknown_player.png',
             total_earnings INTEGER DEFAULT 0,
             player_url TEXT UNIQUE
         )
