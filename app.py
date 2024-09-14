@@ -69,7 +69,9 @@ def get_player_details(username):
             "image": f"../static/images/{player_row[6]}",
         }
 
-        cursor.execute('SELECT * FROM placements WHERE player_name = ?', (username,))
+        cursor.execute('''
+            SELECT * FROM placements WHERE player_name = ? ORDER BY placement_rank, earnings DESC, placement_date DESC
+        ''', (username,))
         placement_rows = cursor.fetchall()
 
         placements = []

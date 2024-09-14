@@ -28,6 +28,7 @@ def create_database():
         )
     ''')
 
+    # flags - https://www.alt-codes.net/flags
     players = [
         ('PeterBot', 'Peter Kata', '2007-06-20', 'United States 🇺🇸', 643724.17, 'peterbot.png'),
         ('Bugha', 'Kyle Giersdorf', '2002-12-30', 'United States 🇺🇸', 3740425.05, 'bugha.png'),
@@ -61,7 +62,7 @@ def create_database():
     placements = [
         ('PeterBot', '2024-09-08', 1, 'Fortnite Champion Series 2024 - Global Championship', 'Global', 200000.00),
         ('PeterBot', '2024-05-19', 1, 'Fortnite Championship Series: Major 2 2024 - Grand Finals', 'NA', 70000.00),
-        ('PeterBot', '2024-07-28', 1, 'Fortnite Championship Series: Major 3 2024 - Grand Finals', 'NA', 700000.00),
+        ('PeterBot', '2024-07-28', 1, 'Fortnite Championship Series: Major 3 2024 - Grand Finals', 'NA', 70000.00),
         ('PeterBot', '2024-05-29', 1, 'Fortnite Championship Series: Chapter 3 Season 2 - Grand Finals', 'NAE', 65000.00),
         ('PeterBot', '2024-02-25', 2, 'Fortnite Championship Series: Major 1 2024 - Grand Finals', 'NA', 45000.00),
         ('PeterBot', '2024-08-11', 2, 'Esports World Cup 2024', 'Global', 40000.00),
