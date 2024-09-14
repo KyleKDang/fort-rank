@@ -33,10 +33,14 @@
                 <td><img src="{{ player['image_url'] }}" alt="{{ player['username'] }}" class="img-thumbnail" style="width: 100px;"></td>
                 <td>
                     <form action="/move_up/{{ player['id'] }}" method="post" style="display:inline;">
-                        <button type="submit" class="btn btn-success">Up</button>
+                        <button type="submit" class="btn btn-success">
+                            <i class="bi bi-arrow-up"></i>
+                        </button>
                     </form>
                     <form action="/move_down/{{ player['id'] }}" method="post" style="display:inline;">
-                        <button type="submit" class="btn btn-danger">Down</button>
+                        <button type="submit" class="btn btn-danger">
+                            <i class="bi bi-arrow-down"></i>
+                        </button>
                     </form>
                 </td>
             </tr>
