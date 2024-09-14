@@ -22,12 +22,11 @@
         <thead>
             <tr>
                 <th>Rank</th>
-                <th>Username</th>
+                <th>Player</th>
                 <th>Name</th>
                 <th>Age</th>
                 <th>Country</th>
                 <th>Total Earnings</th>
-                <th>Image</th>
                 {% if sort_by == 'rank' %}
                     <th>Actions</th>
                 {% endif %}
@@ -36,19 +35,20 @@
         <tbody>
             {% for player in players %}
             <tr>
-                <td>{{ player["position"] }}</td>
-                <td>
+                <td class="vertical-center">{{ player["position"] }}</td>
+                <td class="vertical-center">
                     <a href="/player/{{ player['username'] }}" style="text-decoration: none;">
                         {{ player["username"] }}
                     </a>
+                    <br>
+                    <img src="{{ player['image'] }}" alt="{{ player['username'] }}" class="img-thumbnail" style="width: 100px;height: 100px; object-fit: cover">
                 </td>
-                <td>{{ player["name"] }}</td>
-                <td>{{ player["age"] }}</td>
-                <td>{{ player["country"] }}</td>
-                <td>{{ player["total_earnings"] }}</td>
-                <td><img src="{{ player['image'] }}" alt="{{ player['username'] }}" class="img-thumbnail" style="width: 100px;height: 100px; object-fit: cover"></td>
+                <td class="vertical-center">{{ player["name"] }}</td>
+                <td class="vertical-center">{{ player["age"] }}</td>
+                <td class="vertical-center">{{ player["country"] }}</td>
+                <td class="vertical-center">{{ player["total_earnings"] }}</td>
                 {% if sort_by == 'rank' %}
-                    <td>
+                    <td class="vertical-center">
                         <form action="/move_up/{{ player['rank'] }}" method="post" style="display:inline;">
                             <button type="submit" class="btn btn-success">
                                 <i class="bi bi-arrow-up"></i>
