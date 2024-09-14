@@ -8,9 +8,12 @@
     <h1 class="mb-4">{{ player['username'] }}'s Details</h1>
 
     <div class="mb-4">
-        <img src="{{ player['image'] }}" alt="{{ player['username'] }}" class="img-thumbnail" style="width: 200px;height: 200px; object-fit: cover">
+        <img src="{{ player['image'] }}" alt="{{ player['username'] }}" class="img-thumbnail player-details-image">
         <p><strong>Name:</strong> {{ player['name'] }}</p>
-        <p><strong>Date of Birth:</strong> {{ player['date_of_birth'] }}</p>
+        <p>
+            <strong>Date of Birth:</strong> {{ player['date_of_birth'] }}
+            <strong style="margin-left: 20px;">Age:</strong> {{ player['age'] }}
+        </p>
         <p><strong>Country:</strong> {{ player['country'] }}</p>
         <p><strong>Total Earnings:</strong> {{ player['total_earnings'] }}</p>
     </div>

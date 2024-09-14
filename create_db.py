@@ -1,5 +1,5 @@
 import sqlite3
-from helpers import calculate_all_time, calculate_2024, calculate_2023
+from helpers import calculate_all_time, calculate_by_year
 
 def create_database():
     conn = sqlite3.connect('fortnite_rankings.db')
@@ -19,17 +19,21 @@ def create_database():
             image TEXT,
             rank INTEGER,
             all_time INTEGER,
-            year_2024 INTEGER,
-            year_2023 INTEGER
+            y_2024 INTEGER,
+            y_2023 INTEGER,
+            y_2022 INTEGER,
+            y_2021 INTEGER,
+            y_2020 INTEGER,
+            y_2019 INTEGER
         )
     ''')
 
     players = [
-        ('PeterBot', 'Peter Kata', '2007-06-20', 'United States', 643724.17, 'peterbot.png'),
-        ('Bugha', 'Kyle Giersdorf', '2002-12-30', 'United States', 3740425.05, 'bugha.png'),
-        ('Mero', 'Matthew Faitel', '2004-09-18', 'Canada', 1014450.0, 'mero.png'),
-        ('TaySon', 'Tai Starcic', '2004-06-09', 'Slovenia', 1209089.09, 'tayson.png'),
-        ('Queasy', 'Aleksa Cvetkovic', '2002-04-17', 'Serbia', 1195358.0, 'queasy.png'),
+        ('PeterBot', 'Peter Kata', '2007-06-20', 'United States 🇺🇸', 643724.17, 'peterbot.png'),
+        ('Bugha', 'Kyle Giersdorf', '2002-12-30', 'United States 🇺🇸', 3740425.05, 'bugha.png'),
+        ('Mero', 'Matthew Faitel', '2004-09-18', 'Canada 🇨🇦', 1014450.0, 'mero.png'),
+        ('TaySon', 'Tai Starcic', '2004-06-09', 'Slovenia 🇸🇮', 1209089.09, 'tayson.png'),
+        ('Queasy', 'Aleksa Cvetkovic', '2002-04-17', 'Serbia 🇷🇸', 1195358.0, 'queasy.png'),
     ]
 
     cursor.executemany('''
@@ -129,12 +133,23 @@ def create_database():
         cursor.execute('SELECT * FROM placements WHERE player_name = ?', (username,))
         placements = cursor.fetchall()
         all_time = calculate_all_time(placements)
-        year_2024 = calculate_2024(placements)
-        year_2023 = calculate_2023(placements)
+        y_2024 = calculate_by_year(placements, "2024")
+        y_2023 = calculate_by_year(placements, "2023")
+        y_2022 = calculate_by_year(placements, "2022")
+        y_2021 = calculate_by_year(placements, "2021")
+        y_2020 = calculate_by_year(placements, "2020")
+        y_2019 = calculate_by_year(placements, "2019")
         cursor.execute('''
             UPDATE players
-            SET all_time = ?, year_2024 = ?, year_2023 = ? WHERE username = ?
-        ''', (all_time, year_2024, year_2023, username))
+            SET all_time = ?,
+                y_2024 = ?,
+                y_2023 = ?,
+                y_2022 = ?,
+                y_2021 = ?,      
+                y_2020 = ?,      
+                y_2019 = ?       
+            WHERE username = ?
+        ''', (all_time, y_2024, y_2023, y_2022, y_2021, y_2020, y_2019, username))
         
 
 

@@ -20,7 +20,7 @@ def index():
     with sqlite3.connect('fortnite_rankings.db') as conn:
         cursor = conn.cursor()
 
-        query = f'SELECT * FROM players ORDER BY {sort_by} {direction}'
+        query = f'SELECT * FROM players ORDER BY {sort_by} {direction}, total_earnings DESC'
         cursor.execute(query)
         player_rows = cursor.fetchall()
 
@@ -63,6 +63,7 @@ def get_player_details(username):
             "username": player_row[1],
             "name": player_row[2],
             "date_of_birth": player_row[3],
+            "age": calculate_age(player_row[3]),
             "country": player_row[4],
             "total_earnings": f"${player_row[5]:,.2f}",
             "image": f"../static/images/{player_row[6]}",
