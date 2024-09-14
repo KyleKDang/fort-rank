@@ -1,9 +1,12 @@
-from flask import Flask, redirect, render_template, request
+from flask import Flask, redirect, render_template, request, session
 from datetime import date
 import sqlite3
 from helpers import calculate_age, get_ordinal
 
 app = Flask(__name__)
+app.secret_key = 'familyfriendly'
+
+current_selected = None
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -13,9 +16,14 @@ def index():
             direction = "ASC"
         else:
             direction = "DESC"
+        session['current_selected'] = (sort_by, direction)
     else:
-        sort_by = "rank"
-        direction = "ASC"
+        current_selected = session.get('current_selected')
+        if current_selected:
+            sort_by, direction = current_selected
+        else:
+            sort_by = "rank"
+            direction = "ASC"
 
     with sqlite3.connect('fortnite_rankings.db') as conn:
         cursor = conn.cursor()
