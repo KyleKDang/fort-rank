@@ -13,6 +13,14 @@ def calculate_age(birth_date_str):
     return age
 
 
+def get_ordinal(number):
+    if 10 <= number % 100 <= 20:
+        suffix = 'th'
+    else:
+        suffix = {1: 'st', 2: 'nd', 3: 'rd'}.get(number % 10, 'th')
+    return f"{number}{suffix}"
+
+
 def calculate_all_time(placements):
     region_multipliers = {
         'NAW': 0.75,

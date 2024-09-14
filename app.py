@@ -1,7 +1,7 @@
 from flask import Flask, redirect, render_template, request
 from datetime import date
 import sqlite3
-from helpers import calculate_age
+from helpers import calculate_age, get_ordinal
 
 app = Flask(__name__)
 
@@ -78,7 +78,7 @@ def get_player_details(username):
         for row in placement_rows:
             placements.append({
                 "placement_date": row[2],
-                "placement_rank": row[3],
+                "placement_rank": get_ordinal(row[3]),
                 "tournament_name": row[4],
                 "region": row[5],
                 "earnings": f"${row[6]:,.2f}",
