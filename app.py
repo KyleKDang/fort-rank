@@ -5,28 +5,27 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    conn = sqlite3.connect('fortnite_rankings.db')
-    cursor = conn.cursor()
+    with sqlite3.connect('fortnite_rankings.db') as conn:
+        cursor = conn.cursor()
 
-    cursor.execute('SELECT * FROM players ORDER BY rank ASC')
-    player_rows = cursor.fetchall()
+        cursor.execute('SELECT * FROM players ORDER BY rank ASC')
+        player_rows = cursor.fetchall()
 
-    players = []
+        players = []
 
-    for row in player_rows:
-        player = {
-            'id': row[0],
-            'username': row[1],
-            'name': row[2],
-            'date_of_birth': row[3],
-            'country': row[4],
-            'total_earnings': row[5],
-            'rank': row[6],
-            'image_url': row[7]
-        }
-        players.append(player)
-
-    conn.close()
+        for row in player_rows:
+            player = {
+                'id': row[0],
+                'username': row[1],
+                'name': row[2],
+                'date_of_birth': row[3],
+                'country': row[4],
+                'total_earnings': f"${row[5]:,.2f}",
+                'rank': row[6],
+                'image_url': row[7]
+            }
+            players.append(player)
+            
     return render_template("index.html", players=players)
 
 if __name__ == "__main__":

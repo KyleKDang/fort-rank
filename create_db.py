@@ -13,17 +13,17 @@ def create_database():
             name TEXT NOT NULL,
             date_of_birth DATE NOT NULL,
             country TEXT NOT NULL,
-            total_earnings INTEGER NOT NULL,
+            total_earnings REAL NOT NULL,
             rank INTEGER NOT NULL UNIQUE,
             image_url TEXT
         )
     ''')
 
     players = [
-        ('PeterBot', 'Peter Kata', '2007-06-20', 'United States', 643724, 1, 'static/images/peterbot.jpg'),
-        ('Queasy', 'Aleksa Cvetkovic', '2002-04-17', 'Serbia', 1195358, 2, 'static/images/queasy.jpg'),
-        ('Bugha', 'Kyle Giersdorf', '2002-12-30', 'United States', 3740425, 3, 'static/images/bugha.jpg'),
-        ('Mero', 'Matthew Faitel', '2004-09-18', 'Canada', 1014450, 4, 'static/images/mero.webp'),
+        ('PeterBot', 'Peter Kata', '2007-06-20', 'United States', 643724.17, 1, 'static/images/peterbot.jpg'),
+        ('Queasy', 'Aleksa Cvetkovic', '2002-04-17', 'Serbia', 1195358.0, 2, 'static/images/queasy.jpg'),
+        ('Bugha', 'Kyle Giersdorf', '2002-12-30', 'United States', 3740425.05, 3, 'static/images/bugha.jpg'),
+        ('Mero', 'Matthew Faitel', '2004-09-18', 'Canada', 1014450.0, 4, 'static/images/mero.webp'),
     ]
 
     cursor.executemany('''
