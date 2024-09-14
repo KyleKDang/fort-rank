@@ -5,13 +5,23 @@ from helpers import calculate_age
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def index():
+    if request.method == "POST":
+        sort_by = request.form.get('sort_by')
+        if sort_by == "total_earnings":
+            direction = "DESC"
+        else:
+            direction = "ASC"
+    else:
+        sort_by = "rank"
+        direction = "ASC"
 
     with sqlite3.connect('fortnite_rankings.db') as conn:
         cursor = conn.cursor()
 
-        query = f'SELECT * FROM players ORDER BY rank ASC'
+        query = f'SELECT * FROM players ORDER BY {sort_by} {direction}'
+        print("Executing query:", query)
         cursor.execute(query)
         player_rows = cursor.fetchall()
 
@@ -33,7 +43,7 @@ def index():
             }
             players.append(player)
 
-    return render_template("index.html", players=players)
+    return render_template("index.html", players=players, sort_by=sort_by)
 
 
 def swap_ranks(player1_id, player2_id):
