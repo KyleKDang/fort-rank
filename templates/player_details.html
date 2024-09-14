@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ player['username'] }}'s Details
+{% endblock %}
+
+{% block main %}
+    <h1 class="mb-4">{{ player['username'] }}'s Details</h1>
+
+    <div class="mb-4">
+        <img src="{{ player['image'] }}" alt="{{ player['username'] }}" class="img-thumbnail" style="width: 200px;height: 200px; object-fit: cover">
+        <p><strong>{{ player['username'] }}</strong></p>
+        <p><strong>Name:</strong> {{ player['name'] }}</p>
+        <p><strong>Date of Birth:</strong> {{ player['date_of_birth'] }}</p>
+        <p><strong>Country:</strong> {{ player['country'] }}</p>
+        <p><strong>Total Earnings:</strong> {{ player['total_earnings'] }}</p>
+    </div>
+
+    <h2>Best Placements</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Rank</th>
+                <th>Tournament</th>
+                <th>Region</th>
+                <th>Earnings</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for placement in placements %}
+            <tr>
+                <td>{{ placement['placement_date'] }}</td>
+                <td>{{ placement['placement_rank'] }}</td>
+                <td>{{ placement['tournament_name'] }}</td>
+                <td>{{ placement['region'] }}</td>
+                <td>{{ placement['earnings'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

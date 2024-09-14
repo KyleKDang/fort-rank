@@ -39,12 +39,51 @@ def index():
                 'age': calculate_age(row[3]),
                 'country': row[4],
                 'total_earnings': f"${row[5]:,.2f}",
-                'image_url': row[6],
+                'image': f"../static/images/{row[6]}",
                 'rank': row[7]
             }
             players.append(player)
 
     return render_template("index.html", players=players, sort_by=sort_by)
+
+
+@app.route('/player/<username>')
+def player_details(username):
+    player, placements = get_player_details(username)
+    return render_template('player_details.html', player=player, placements=placements)
+
+
+def get_player_details(username):
+    with sqlite3.connect('fortnite_rankings.db') as conn:
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM players WHERE username = ?', (username,))
+        player_row = cursor.fetchone()
+        if player_row is None:
+            return None, []
+
+        player = {
+            "username": player_row[1],
+            "name": player_row[2],
+            "date_of_birth": player_row[3],
+            "country": player_row[4],
+            "total_earnings": f"${player_row[5]:,.2f}",
+            "image": f"../static/images/{player_row[6]}",
+        }
+
+        cursor.execute('SELECT * FROM placements WHERE player_name = ?', (username,))
+        placement_rows = cursor.fetchall()
+
+        placements = []
+        for row in placement_rows:
+            placements.append({
+                "placement_date": row[2],
+                "placement_rank": row[3],
+                "tournament_name": row[4],
+                "region": row[5],
+                "earnings": f"${row[6]:,.2f}",
+            })
+
+        return player, placements
 
 
 def swap_ranks(player1_id, player2_id):

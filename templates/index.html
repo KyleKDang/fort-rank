@@ -37,12 +37,16 @@
             {% for player in players %}
             <tr>
                 <td>{{ player["position"] }}</td>
-                <td>{{ player["username"] }}</td>
+                <td>
+                    <a href="/player/{{ player['username'] }}" style="text-decoration: none;">
+                        {{ player["username"] }}
+                    </a>
+                </td>
                 <td>{{ player["name"] }}</td>
                 <td>{{ player["age"] }}</td>
                 <td>{{ player["country"] }}</td>
                 <td>{{ player["total_earnings"] }}</td>
-                <td><img src="{{ player['image_url'] }}" alt="{{ player['username'] }}" class="img-thumbnail" style="width: 100px;height: 100px; object-fit: cover"></td>
+                <td><img src="{{ player['image'] }}" alt="{{ player['username'] }}" class="img-thumbnail" style="width: 100px;height: 100px; object-fit: cover"></td>
                 {% if sort_by == 'rank' %}
                     <td>
                         <form action="/move_up/{{ player['rank'] }}" method="post" style="display:inline;">

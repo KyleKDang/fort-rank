@@ -6,6 +6,7 @@ def create_database():
     cursor = conn.cursor()
 
     cursor.execute('DROP TABLE IF EXISTS players')
+    cursor.execute('DROP TABLE IF EXISTS placements')
 
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS players (
@@ -15,21 +16,21 @@ def create_database():
             date_of_birth DATE NOT NULL,
             country TEXT NOT NULL,
             total_earnings REAL NOT NULL,
-            image_url TEXT,
+            image TEXT,
             rank INTEGER,
             all_time INTEGER
         )
     ''')
 
     players = [
-        ('PeterBot', 'Peter Kata', '2007-06-20', 'United States', 643724.17, 'static/images/peterbot.jpg'),
-        ('Queasy', 'Aleksa Cvetkovic', '2002-04-17', 'Serbia', 1195358.0, 'static/images/queasy.jpg'),
-        ('Bugha', 'Kyle Giersdorf', '2002-12-30', 'United States', 3740425.05, 'static/images/bugha.jpg'),
-        ('Mero', 'Matthew Faitel', '2004-09-18', 'Canada', 1014450.0, 'static/images/mero.webp'),
+        ('PeterBot', 'Peter Kata', '2007-06-20', 'United States', 643724.17, 'peterbot.jpg'),
+        ('Queasy', 'Aleksa Cvetkovic', '2002-04-17', 'Serbia', 1195358.0, 'queasy.jpg'),
+        ('Bugha', 'Kyle Giersdorf', '2002-12-30', 'United States', 3740425.05, 'bugha.jpg'),
+        ('Mero', 'Matthew Faitel', '2004-09-18', 'Canada', 1014450.0, 'mero.webp'),
     ]
 
     cursor.executemany('''
-        INSERT INTO players (username, name, date_of_birth, country, total_earnings, image_url)
+        INSERT INTO players (username, name, date_of_birth, country, total_earnings, image)
         VALUES (?, ?, ?, ?, ?, ?)
     ''', players)
 
@@ -53,7 +54,7 @@ def create_database():
     placements = [
         ('PeterBot', '2024-09-08', 1, 'Fortnite Champion Series 2024 - Global Championship', 'Global', 200000.00),
         ('PeterBot', '2024-05-19', 1, 'Fortnite Championship Series: Major 2 2024 - Grand Finals', 'NA', 70000.00),
-        ('PeterBot', '2024-07-28', 1, 'Fortnite Championship Series: Major 3 2024 - Grand Finals', 'NA', 200000.00),
+        ('PeterBot', '2024-07-28', 1, 'Fortnite Championship Series: Major 3 2024 - Grand Finals', 'NA', 700000.00),
         ('PeterBot', '2024-05-29', 1, 'Fortnite Championship Series: Chapter 3 Season 2 - Grand Finals', 'NAE', 65000.00),
         ('PeterBot', '2024-02-25', 2, 'Fortnite Championship Series: Major 1 2024 - Grand Finals', 'NA', 45000.00),
         ('Queasy', '2022-03-06', 1, 'Fortnite Championship Series: Chapter 3 Season 1 - Grand Finals', 'EU', 150000.00),
