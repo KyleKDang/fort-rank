@@ -7,10 +7,12 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
+
     with sqlite3.connect('fortnite_rankings.db') as conn:
         cursor = conn.cursor()
 
-        cursor.execute('SELECT * FROM players ORDER BY rank ASC')
+        query = f'SELECT * FROM players ORDER BY rank ASC'
+        cursor.execute(query)
         player_rows = cursor.fetchall()
 
         players = []

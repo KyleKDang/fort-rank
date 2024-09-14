@@ -6,6 +6,16 @@
 
 {% block main %}
     <h1 class="mb-4">Player Rankings</h1>
+
+    <form action="/" method="post" class="mb-4" style="display: flex; align-items: center;">
+        <div class="form-group" style="margin-right: 10px;">
+            <select id="sort_by" name="sort_by" class="form-control" onchange="this.form.submit()">
+                <option value="" disabled selected>Sort By</option>
+                <option value="rank">User Rank</option>
+                <option value="total_earnings">Earnings</option>
+            </select>
+        </div>
+    </form>
     
     <table class="table table-striped">
         <thead>
