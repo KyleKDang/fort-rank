@@ -1,4 +1,5 @@
 import sqlite3
+from helpers import calculate_all_time
 
 def create_database():
     conn = sqlite3.connect('fortnite_rankings.db')
@@ -15,7 +16,8 @@ def create_database():
             country TEXT NOT NULL,
             total_earnings REAL NOT NULL,
             image_url TEXT,
-            rank INTEGER
+            rank INTEGER,
+            all_time INTEGER
         )
     ''')
 
@@ -75,6 +77,19 @@ def create_database():
         INSERT INTO placements (player_name, placement_date, placement_rank, tournament_name, region, earnings)
         VALUES (?, ?, ?, ?, ?, ?)
     ''', placements)
+
+    cursor.execute('SELECT * FROM players')
+    player_rows = cursor.fetchall()
+    for row in player_rows:
+        username = row[1]
+        cursor.execute('SELECT * FROM placements WHERE player_name = ?', (username,))
+        placements = cursor.fetchall()
+        all_time = calculate_all_time(placements)
+        cursor.execute('''
+            UPDATE players SET all_time = ? WHERE username = ?
+        ''', (all_time, username))
+        
+
 
     conn.commit()
     conn.close()

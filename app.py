@@ -11,6 +11,8 @@ def index():
         sort_by = request.form.get('sort_by')
         if sort_by == "total_earnings":
             direction = "DESC"
+        elif sort_by == "all_time":
+            direction = "DESC"
         else:
             direction = "ASC"
     else:
@@ -21,7 +23,6 @@ def index():
         cursor = conn.cursor()
 
         query = f'SELECT * FROM players ORDER BY {sort_by} {direction}'
-        print("Executing query:", query)
         cursor.execute(query)
         player_rows = cursor.fetchall()
 
