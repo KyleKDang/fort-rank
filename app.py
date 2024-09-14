@@ -13,6 +13,8 @@ def index():
             direction = "DESC"
         elif sort_by == "all_time":
             direction = "DESC"
+        elif sort_by == "year_2024":
+            direction = "DESC"
         else:
             direction = "ASC"
     else:

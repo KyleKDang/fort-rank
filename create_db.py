@@ -1,5 +1,5 @@
 import sqlite3
-from helpers import calculate_all_time
+from helpers import calculate_all_time, calculate_2024
 
 def create_database():
     conn = sqlite3.connect('fortnite_rankings.db')
@@ -18,7 +18,8 @@ def create_database():
             total_earnings REAL NOT NULL,
             image TEXT,
             rank INTEGER,
-            all_time INTEGER
+            all_time INTEGER,
+            year_2024 INTEGER
         )
     ''')
 
@@ -62,7 +63,7 @@ def create_database():
         ('PeterBot', '2021-11-21', 4, 'Fortnite Championship Series: Grand Royale 2021', 'NAE', 28000.00),
         ('PeterBot', '2021-06-26', 8, 'Fortnite Championship Series: All-Star Showdown 2021 - Solo Final', 'NAE', 18000.00),
         ('PeterBot', '2022-08-14', 6, 'Fortnite Championship Series: Chapter 3 Season 3 - Grand Finals', 'NA', 16000.00),
-        ('PeterBot', '2024-06-02', 2, 'DreamHack Dallas 2024', 'Global', 11000.00),
+        ('PeterBot', '2024-06-02', 2, 'DreamHack Dallas 2024', 'Global (Third-Party Event)', 11000.00),
         ('Bugha', '2019-07-28', 1, 'Fortnite World Cup Finals 2019 - Solo', 'Global', 3000000.00),
         ('Bugha', '2021-11-21', 1, 'Fortnite Championship Series: Grand Royale 2021', 'NAE', 95000.00),
         ('Bugha', '2022-03-06', 1, 'Fortnite Championship Series: Chapter 3 Season 1 - Grand Finals', 'NAE', 65000.00),
@@ -98,8 +99,8 @@ def create_database():
         ('TaySon', '2021-05-30', 3, 'Fortnite Championship Series: Chapter 2 Season 6 - Grand Finals', 'EU', 45000.00),
         ('TaySon', '2020-11-01', 1, 'Fortnite Championship Series: Chapter 2 Season 4 - Grand Finals', 'EU', 37000.00),
         ('TaySon', '2021-09-05', 5, 'Fortnite Championship Series: Chapter 2 Season 7 - Grand Finals', 'EU', 35000.00),
-        ('TaySon', '2024-06-02', 1, 'DreamHack Dallas 2024', 'Global', 25000.00),
-        ('TaySon', '2022-07-31', 6, 'Gamers8 2022', 'Global', 20000.00),
+        ('TaySon', '2024-06-02', 1, 'DreamHack Dallas 2024', 'Global (Third-Party Event)', 25000.00),
+        ('TaySon', '2022-07-31', 6, 'Gamers8 2022', 'Global (Third-Party Event)', 20000.00),
         ('Queasy', '2022-03-06', 1, 'Fortnite Championship Series: Chapter 3 Season 1 - Grand Finals', 'EU', 150000.00),
         ('Queasy', '2024-09-08', 2, 'Fortnite Champion Series 2024 - Global Championship', 'Global', 150000.00),
         ('Queasy', '2021-05-30', 1, 'Fortnite Championship Series: Chapter 2 Season 6 - Grand Finals', 'EU', 100000.00),
@@ -110,7 +111,7 @@ def create_database():
         ('Queasy', '2024-02-25', 2, 'Fortnite Championship Series: Major 1 2024 - Grand Finals', 'EU', 60000.00),
         ('Queasy', '2023-03-05', 4, 'Fortnite Championship Series: Major 1 2023', 'EU', 40000.00),
         ('Queasy', '2020-04-19', 2, 'Fortnite Championship Series: Chapter 2 Season 2 - Grand Finals', 'EU', 30000.00),
-        ('Queasy', '2022-07-31', 5, 'Gamers8 2022', 'Global', 25000.00),
+        ('Queasy', '2022-07-31', 5, 'Gamers8 2022', 'Global (Third-Party Event)', 25000.00),
         ('Queasy', '2024-05-19', 7, 'Fortnite Championship Series: Major 2 2024 - Grand Finals', 'EU', 20000.00),
 
     ]
@@ -127,9 +128,11 @@ def create_database():
         cursor.execute('SELECT * FROM placements WHERE player_name = ?', (username,))
         placements = cursor.fetchall()
         all_time = calculate_all_time(placements)
+        year_2024 = calculate_2024(placements)
         cursor.execute('''
-            UPDATE players SET all_time = ? WHERE username = ?
-        ''', (all_time, username))
+            UPDATE players
+            SET all_time = ?, year_2024 = ? WHERE username = ?
+        ''', (all_time, year_2024, username))
         
 
 

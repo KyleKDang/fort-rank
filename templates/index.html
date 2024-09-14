@@ -13,7 +13,8 @@
             <select id="sort_by" name="sort_by" class="form-control" onchange="this.form.submit()">
                 <option value="rank" {% if sort_by == 'rank' %}selected{% endif %}>User Rank</option>
                 <option value="total_earnings" {% if sort_by == 'total_earnings' %}selected{% endif %}>Earnings</option>
-                <option value="all_time" {% if sort_by == 'all_time' %}selected{% endif %}>All-Time</option>
+                <option value="all_time" {% if sort_by == 'all_time' %}selected{% endif %}>All-Time Placements</option>
+                <option value="year_2024" {% if sort_by == 'year_2024' %}selected{% endif %}>2024 Placements</option>
             </select>
         </div>
     </form>
