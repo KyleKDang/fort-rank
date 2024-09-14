@@ -1,5 +1,5 @@
 import sqlite3
-from helpers import calculate_all_time, calculate_2024
+from helpers import calculate_all_time, calculate_2024, calculate_2023
 
 def create_database():
     conn = sqlite3.connect('fortnite_rankings.db')
@@ -19,7 +19,8 @@ def create_database():
             image TEXT,
             rank INTEGER,
             all_time INTEGER,
-            year_2024 INTEGER
+            year_2024 INTEGER,
+            year_2023 INTEGER
         )
     ''')
 
@@ -129,10 +130,11 @@ def create_database():
         placements = cursor.fetchall()
         all_time = calculate_all_time(placements)
         year_2024 = calculate_2024(placements)
+        year_2023 = calculate_2023(placements)
         cursor.execute('''
             UPDATE players
-            SET all_time = ?, year_2024 = ? WHERE username = ?
-        ''', (all_time, year_2024, username))
+            SET all_time = ?, year_2024 = ?, year_2023 = ? WHERE username = ?
+        ''', (all_time, year_2024, year_2023, username))
         
 
 

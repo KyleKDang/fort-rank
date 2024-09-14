@@ -35,7 +35,8 @@ def calculate_all_time(placements):
 
     return total
 
-def calculate_2024(placements):
+
+def calculate_year(placements, selected_year):
     region_multipliers = {
         'NAW': 0.75,
         'NAE': 1.0,
@@ -53,7 +54,7 @@ def calculate_2024(placements):
 
         year = str(date.year)
 
-        if year == "2024":
+        if year == selected_year:
 
             rank = placement[3]
             region = placement[5]
@@ -63,3 +64,11 @@ def calculate_2024(placements):
             total += (100 - (rank - 1) * 10) * multiplier
 
     return total
+
+
+def calculate_2024(placements):
+    return calculate_year(placements, "2024")
+
+
+def calculate_2023(placements):
+    return calculate_year(placements, "2023")

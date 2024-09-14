@@ -9,14 +9,10 @@ app = Flask(__name__)
 def index():
     if request.method == "POST":
         sort_by = request.form.get('sort_by')
-        if sort_by == "total_earnings":
-            direction = "DESC"
-        elif sort_by == "all_time":
-            direction = "DESC"
-        elif sort_by == "year_2024":
-            direction = "DESC"
-        else:
+        if sort_by == "rank":
             direction = "ASC"
+        else:
+            direction = "DESC"
     else:
         sort_by = "rank"
         direction = "ASC"
