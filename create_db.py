@@ -14,21 +14,20 @@ def create_database():
             date_of_birth DATE NOT NULL,
             country TEXT NOT NULL,
             total_earnings REAL NOT NULL,
-            rank INTEGER NOT NULL UNIQUE,
             image_url TEXT
         )
     ''')
 
     players = [
-        ('PeterBot', 'Peter Kata', '2007-06-20', 'United States', 643724.17, 1, 'static/images/peterbot.jpg'),
-        ('Queasy', 'Aleksa Cvetkovic', '2002-04-17', 'Serbia', 1195358.0, 2, 'static/images/queasy.jpg'),
-        ('Bugha', 'Kyle Giersdorf', '2002-12-30', 'United States', 3740425.05, 3, 'static/images/bugha.jpg'),
-        ('Mero', 'Matthew Faitel', '2004-09-18', 'Canada', 1014450.0, 4, 'static/images/mero.webp'),
+        ('PeterBot', 'Peter Kata', '2007-06-20', 'United States', 643724.17, 'static/images/peterbot.jpg'),
+        ('Queasy', 'Aleksa Cvetkovic', '2002-04-17', 'Serbia', 1195358.0, 'static/images/queasy.jpg'),
+        ('Bugha', 'Kyle Giersdorf', '2002-12-30', 'United States', 3740425.05, 'static/images/bugha.jpg'),
+        ('Mero', 'Matthew Faitel', '2004-09-18', 'Canada', 1014450.0, 'static/images/mero.webp'),
     ]
 
     cursor.executemany('''
-        INSERT INTO players (username, name, date_of_birth, country, total_earnings, rank, image_url)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO players (username, name, date_of_birth, country, total_earnings, image_url)
+        VALUES (?, ?, ?, ?, ?, ?)
     ''', players)
 
     conn.commit()

@@ -10,20 +10,22 @@ def index():
     with sqlite3.connect('fortnite_rankings.db') as conn:
         cursor = conn.cursor()
 
-        cursor.execute('SELECT * FROM players ORDER BY rank ASC')
+        cursor.execute('SELECT * FROM players ORDER BY id ASC')
         player_rows = cursor.fetchall()
 
         players = []
+        rank = 0
 
         for row in player_rows:
+            rank += 1
             player = {
+                'rank': rank,
                 'id': row[0],
                 'username': row[1],
                 'name': row[2],
                 'age': calculate_age(row[3]),
                 'country': row[4],
                 'total_earnings': f"${row[5]:,.2f}",
-                'rank': row[6],
                 'image_url': row[7]
             }
             players.append(player)
