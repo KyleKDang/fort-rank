@@ -14,7 +14,8 @@ def create_database():
             date_of_birth DATE NOT NULL,
             country TEXT NOT NULL,
             total_earnings REAL NOT NULL,
-            image_url TEXT
+            image_url TEXT,
+            rank INTEGER
         )
     ''')
 
@@ -29,6 +30,10 @@ def create_database():
         INSERT INTO players (username, name, date_of_birth, country, total_earnings, image_url)
         VALUES (?, ?, ?, ?, ?, ?)
     ''', players)
+
+    cursor.execute('''
+        UPDATE players SET rank = id
+    ''')
 
     conn.commit()
     conn.close()

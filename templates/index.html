@@ -23,7 +23,7 @@
         <tbody>
             {% for player in players %}
             <tr>
-                <td>{{ player["rank"] }}</td>
+                <td>{{ player["position"] }}</td>
                 <td>{{ player["username"] }}</td>
                 <td>{{ player["name"] }}</td>
                 <td>{{ player["age"] }}</td>
@@ -31,12 +31,12 @@
                 <td>{{ player["total_earnings"] }}</td>
                 <td><img src="{{ player['image_url'] }}" alt="{{ player['username'] }}" class="img-thumbnail" style="width: 100px;height: 100px; object-fit: cover"></td>
                 <td>
-                    <form action="/move_up/{{ player['id'] }}" method="post" style="display:inline;">
+                    <form action="/move_up/{{ player['rank'] }}" method="post" style="display:inline;">
                         <button type="submit" class="btn btn-success">
                             <i class="bi bi-arrow-up"></i>
                         </button>
                     </form>
-                    <form action="/move_down/{{ player['id'] }}" method="post" style="display:inline;">
+                    <form action="/move_down/{{ player['rank'] }}" method="post" style="display:inline;">
                         <button type="submit" class="btn btn-danger">
                             <i class="bi bi-arrow-down"></i>
                         </button>
