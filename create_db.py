@@ -35,6 +35,47 @@ def create_database():
         UPDATE players SET rank = id
     ''')
 
+    cursor.execute('''
+            CREATE TABLE IF NOT EXISTS placements (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                player_name TEXT NOT NULL,
+                placement_date DATE NOT NULL,
+                placement_rank INTEGER NOT NULL,
+                tournament_name TEXT NOT NULL,
+                region TEXT NOT NULL,
+                earnings REAL NOT NULL,
+                FOREIGN KEY (player_name) REFERENCES players(username)
+            )
+        ''')
+    
+    placements = [
+        ('PeterBot', '2024-09-08', 1, 'Fortnite Champion Series 2024 - Global Championship', 'Global', 200000.00),
+        ('PeterBot', '2024-05-19', 1, 'Fortnite Championship Series: Major 2 2024 - Grand Finals', 'NA', 70000.00),
+        ('PeterBot', '2024-07-28', 1, 'Fortnite Championship Series: Major 3 2024 - Grand Finals', 'NA', 200000.00),
+        ('PeterBot', '2024-05-29', 1, 'Fortnite Championship Series: Chapter 3 Season 2 - Grand Finals', 'NAE', 65000.00),
+        ('PeterBot', '2024-02-25', 2, 'Fortnite Championship Series: Major 1 2024 - Grand Finals', 'NA', 45000.00),
+        ('Queasy', '2022-03-06', 1, 'Fortnite Championship Series: Chapter 3 Season 1 - Grand Finals', 'EU', 150000.00),
+        ('Queasy', '2024-09-08', 2, 'Fortnite Champion Series 2024 - Global Championship', 'Global', 150000.00),
+        ('Queasy', '2021-05-30', 1, 'Fortnite Championship Series: Chapter 2 Season 6 - Grand Finals', 'EU', 100000.00),
+        ('Queasy', '2022-03-06', 1, 'Fortnite Championship Series: Major 2 2023 - Grand Finals', 'EU', 100000.00),
+        ('Queasy', '2022-03-06', 3, 'Fortnite Championship Series: Grand Royale 2021', 'EU', 90000.00),
+        ('Bugha', '2019-07-28', 1, 'Fortnite World Cup Finals 2019 - Solo', 'Global', 3000000.00),
+        ('Bugha', '2021-11-21', 1, 'Fortnite Championship Series: Grand Royale 2021', 'NAE', 95000.00),
+        ('Bugha', '2022-03-06', 1, 'Fortnite Championship Series: Chapter 3 Season 1 - Grand Finals', 'NAE', 65000.00),
+        ('Bugha', '2022-08-14', 2, 'Fortnite Championship Series: Chapter 3 Season 3 - Grand Finals', 'NAE', 50000.00),
+        ('Bugha', '2023-08-13', 2, 'Fortnite Championship Series: Major 3 2023 - Grand Finals', 'NA', 47500.00),
+        ('Mero', '2023-10-15', 1, 'Fortnite Champion Series: Global Chamionship 2023', 'Global', 500000.00),
+        ('Mero', '2021-11-21', 1, 'Fortnite Champion Series: Grand Royale 2021', 'NAE', 95000.00),
+        ('Mero', '2022-03-06', 1, 'Fortnite Champion Series: Chapter 3 Season 1 - Grand Finals', 'NAE', 650000.00),
+        ('Mero', '2021-05-30', 1, 'Fortnite Champion Series: Chapter 2 Season 6 - Grand Finals', 'NAE', 500000.00),
+        ('Mero', '2022-08-14', 2, 'Fortnite Champion Series: Chapter 3 Season 3 - Grand Finals', 'NAE', 50000.00),
+    ]
+
+    cursor.executemany('''
+        INSERT INTO placements (player_name, placement_date, placement_rank, tournament_name, region, earnings)
+        VALUES (?, ?, ?, ?, ?, ?)
+    ''', placements)
+
     conn.commit()
     conn.close()
 
