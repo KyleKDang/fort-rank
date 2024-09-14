@@ -19,14 +19,6 @@ def create_database():
         )
     ''')
 
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS users (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            username TEXT NOT NULL UNIQUE,
-            password TEXT NOT NULL
-        )
-    ''')
-
     players = [
         ('PeterBot', 'Peter Kata', '2007-06-20', 'United States', 643724, 1, 'static/images/peterbot.jpg'),
         ('Queasy', 'Aleksa Cvetkovic', '2002-04-17', 'Serbia', 1195358, 2, 'static/images/queasy.jpg'),

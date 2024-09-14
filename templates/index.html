@@ -1,66 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Player Rankings</title>
-        <style>
-            .player-image {
-                width: 100px;
-                height: auto;
-            }
-            table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-            th, td {
-                border: 1px solid #ddd;
-                padding: 8px;
-            }
-            th {
-                background-color: #f2f2f2;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Player Rankings</h1>
-        <p>Welcome, {{ user.username }}! <a href="{{ url_for('logout') }}">Logout</a></p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Rank</th>
-                    <th>Image</th>
-                    <th>Username</th>
-                    <th>Name</th>
-                    <th>Date of Birth</th>
-                    <th>Country</th>
-                    <th>Total Earnings</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for player in players %}
-                    <tr>
-                        <td>{{ player[6] }}</td> <!-- rank -->
-                        <td><img src="{{ player[7] }}" alt="{{ player[1] }}" class="player-image"></td> <!-- image_url -->
-                        <td>{{ player[1] }}</td> <!-- username -->
-                        <td>{{ player[2] }}</td> <!-- name -->
-                        <td>{{ player[3] }}</td> <!-- date_of_birth -->
-                        <td>{{ player[4] }}</td> <!-- country -->
-                        <td>${{ player[5] }}</td> <!-- total_earnings -->
-                        <td>
-                            {% if player[6] > 1 %}
-                                <form action="/move/{{ player[0] }}/up" method="post" style="display:inline;">
-                                    <button type="submit">⬆️</button>
-                                </form>
-                            {% endif %}
-                            <form action="/move/{{ player[0] }}/down" method="post" style="display:inline;">
-                                <button type="submit">⬇️</button>
-                            </form>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </body>
-</html>
+{% extends "layout.html" %}
+
+{% block title %}
+    Player Rankings
+{% endblock %}
+
+{% block main %}
+    <h1 class="mb-4">Player Rankings</h1>
+    
+    <!-- Table to display players -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Date of Birth</th>
+                <th>Country</th>
+                <th>Total Earnings</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player in players %}
+            <tr>
+                <td>{{ player.rank }}</td>
+                <td>{{ player.username }}</td>
+                <td>{{ player.name }}</td>
+                <td>{{ player.date_of_birth }}</td>
+                <td>{{ player.country }}</td>
+                <td>{{ player.total_earnings }}</td>
+                <td><img src="{{ player.image_url }}" alt="{{ player.username }}" class="img-thumbnail" style="width: 100px;"></td>
+                <td>
+                    <form action="/move_up/{{ player.id }}" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-success">Up</button>
+                    </form>
+                    <form action="/move_down/{{ player.id }}" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Down</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
