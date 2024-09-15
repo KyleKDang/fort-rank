@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block main %}
-    <script src="../static/js/scripts.js"></script>
+    {% if reset_scroll == False %}
+        <script src="../static/js/scripts.js"></script>
+    {% endif %}
     <h1 class="mb-4">{{ player['username'] }}'s Details</h1>
 
     <div class="mb-4">
