@@ -14,8 +14,6 @@ window.addEventListener('load', function () {
     }
 });
 
-console.log("Scroll restoration script executed");
-
 
 
 

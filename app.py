@@ -58,22 +58,25 @@ def player_details(username):
     if request.method == "POST":
         sort_by = request.form.get('sort_by')
         if sort_by == "placement_rank":
+            formatted_sort_by = sort_by
             direction = "ASC"
         elif sort_by == "date_newest":
-            sort_by = "placement_date"
-            direction = "ASC"
-        elif sort_by == "date_oldest":
-            sort_by = "placement_date"
+            formatted_sort_by = "placement_date"
             direction = "DESC"
+        elif sort_by == "date_oldest":
+            formatted_sort_by = "placement_date"
+            direction = "ASC"
         else:
+            formatted_sort_by = sort_by
             direction = "DESC"
     else:
         sort_by = "placement_rank"
+        formatted_sort_by = "placement_rank"
         direction = "ASC"
 
         
-    player, placements = get_player_details(username, sort_by, direction)
-    return render_template('player_details.html', player=player, placements=placements)
+    player, placements = get_player_details(username, formatted_sort_by, direction)
+    return render_template('player_details.html', player=player, placements=placements, sort_by=sort_by)
 
 
 def get_player_details(username, sort_by, direction):
