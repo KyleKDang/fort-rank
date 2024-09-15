@@ -53,13 +53,30 @@ def index():
     return render_template("index.html", players=players, sort_by=sort_by)
 
 
-@app.route('/player/<username>')
+@app.route('/player/<username>', methods=["GET", "POST"])
 def player_details(username):
-    player, placements = get_player_details(username)
+    if request.method == "POST":
+        sort_by = request.form.get('sort_by')
+        if sort_by == "placement_rank":
+            direction = "ASC"
+        elif sort_by == "date_newest":
+            sort_by = "placement_date"
+            direction = "ASC"
+        elif sort_by == "date_oldest":
+            sort_by = "placement_date"
+            direction = "DESC"
+        else:
+            direction = "DESC"
+    else:
+        sort_by = "placement_rank"
+        direction = "ASC"
+
+        
+    player, placements = get_player_details(username, sort_by, direction)
     return render_template('player_details.html', player=player, placements=placements)
 
 
-def get_player_details(username):
+def get_player_details(username, sort_by, direction):
     with sqlite3.connect('fortnite_rankings.db') as conn:
         cursor = conn.cursor()
         cursor.execute('SELECT * FROM players WHERE username = ?', (username,))
@@ -77,9 +94,10 @@ def get_player_details(username):
             "image": f"../static/images/{player_row[6]}",
         }
 
-        cursor.execute('''
-            SELECT * FROM placements WHERE player_name = ? ORDER BY placement_rank, earnings DESC, placement_date DESC
-        ''', (username,))
+        query = f'''
+            SELECT * FROM placements WHERE player_name = ? ORDER BY {sort_by} {direction}
+        '''
+        cursor.execute(query, (username,))
         placement_rows = cursor.fetchall()
 
         placements = []

@@ -39,7 +39,9 @@ def create_database():
         ('Setty', 'Iwa Zajac', '2003-09-08', 'Poland 🇵🇱', 1141351.81, 'setty.png'),
         ('Th0masHD', 'Thomas Hoxbro Davidsen', '2002-05-30', 'Denmark 🇩🇰', 1321326.84, 'th0mashd.png'),
         ('Pollo', 'Miguel Moreno', '2008-05-08', 'Mexico 🇲🇽', 480725.00, 'pollo.png'),
-        ('Veno', 'Harry Pearson', '2004-11-26', 'United Kingdom 🇬🇧', 824425.96, 'veno.png')
+        ('Veno', 'Harry Pearson', '2004-11-26', 'United Kingdom 🇬🇧', 824425.96, 'veno.png'),
+        ('EpikWhale', 'Shane Cotton', '2002-08-03', 'United States 🇺🇸', 1838487.32, 'epikwhale.png'),
+        ('Malibuca', 'Danila Yakovenko', '2005-10-14', 'Russia 🇷🇺', 973063.64, 'malibuca.png'),
     ]
 
     cursor.executemany('''
@@ -184,6 +186,36 @@ def create_database():
         ('Veno', '2023-03-05', 4, 'Fortnite Championship Series: Major 1 2023 - Grand Finals', 'EU', 40000.00),
         ('Veno', '2021-09-05', 5, 'Fortnite Championship Series: Chapter 2 Season 7 - Grand Finals', 'EU', 35000.00),
         ('Veno', '2024-07-28', 4, 'Fortnite Championship Series: Major 3 2024 - Grand Finals', 'EU', 30000.00),
+        ('EpikWhale', '2019-07-28', 3, 'Fortnite World Cup Finals 2019 - Solo', 'Global', 1200000.00),
+        ('EpikWhale', '2022-07-31', 1, 'Gamers8 2022', 'Global (Third-Party Event)', 125000.00),
+        ('EpikWhale', '2023-07-09', 6, 'Gamers8 2023', 'Global (Third-Party Event)', 40000.00),
+        ('EpikWhale', '2021-11-21', 1, 'Fortnite Championship Series: Grand Royale 2021', 'NAW', 35000.00),
+        ('EpikWhale', '2024-02-25', 4, 'Fortnite Championship Series: Major 1 2024 - Grand Finals', 'NA', 30000.00),
+        ('EpikWhale', '2021-03-14', 1, 'Fortnite Championship Series: Chapter 2 Season 5 - Grand Finals', 'NAW', 25000.00),
+        ('EpikWhale', '2021-05-30', 1, 'Fortnite Championship Series: Chapter 2 Season 6 - Grand Finals', 'NAW', 25000.00),
+        ('EpikWhale', '2021-06-26', 4, 'Fortnite Championship Series: All-Star Showdown 2021 - Solo Final', 'NAW', 17500.00),
+        ('EpikWhale', '2021-09-05', 1, 'Fortnite Championship Series: Chapter 2 Season 7 - Grand Finals', 'NAW', 16000.00),
+        ('EpikWhale', '2020-11-01', 1, 'Fortnite Championship Series: Chapter 2 Season 4 - Grand Finals', 'NAW', 15000.00),
+        ('EpikWhale', '2022-05-29', 1, 'Fortnite Championship Series: Chapter 3 Season 2 - Grand Finals', 'NAW', 14000.00),
+        ('EpikWhale', '2021-10-31', 2, 'Fortnite Championship Series: Chapter 2 Season 8 - Grand Finals', 'NAW', 11500.00),
+        ('EpikWhale', '2020-05-24', 6, 'Fortnite Championship Series Invitational - Grand Finals', 'NAW', 9000.00),
+        ('EpikWhale', '2020-04-19', 1, 'Fortnite Championship Series: Chapter 2 Season 2 - Grand Finals', 'NAW', 8750.00),
+        ('EpikWhale', '2019-12-08', 3, 'Fortnite Championship Series: Chapter 2 Season 1 - Grand Finals', 'NAW', 6000.00),
+        ('EpikWhale', '2023-03-05', 6, 'Fortnite Championship Series: Major 1 2023 - Grand Finals', 'NAW', 5000.00),
+        ('EpikWhale', '2019-09-22', 4, 'Fortnite Championship Series: Season X - Grand Finals', 'NAW', 44000.00),
+        ('Malibuca', '2022-07-31', 1, 'Gamers8 2022', 'Global (Third-Party Event)', 125000.00),
+        ('Malibuca', '2022-08-14', 2, 'Fortnite Championship Series: Chapter 3 Season 3 - Grand Finals', 'EU', 100000.00),
+        ('Malibuca', '2024-02-25', 1, 'Fortnite Championship Series: Major 1 2024 - Grand Finals', 'EU', 85000.00),
+        ('Malibuca', '2022-05-29', 4, 'Fortnite Championship Series: Chapter 3 Season 2 - Grand Finals', 'EU', 60000.00),
+        ('Malibuca', '2023-03-05', 2, 'Fortnite Championship Series: Major 1 2023 - Grand Finals', 'EU', 60000.00),
+        ('Malibuca', '2023-05-14', 3, 'Fortnite Championship Series: Major 2 2023 - Grand Finals', 'EU', 50000.00),
+        ('Malibuca', '2023-07-09', 5, 'Gamers8 2023', 'Global (Third-Party Event)', 50000.00),
+        ('Malibuca', '2024-07-28', 4, 'Fortnite Championship Series: Major 3 2024 - Grand Finals', 'EU', 40000.00),
+        ('Malibuca', '2021-10-31', 7, 'Fortnite Championship Series: Chapter 2 Season 8 - Grand Finals', 'EU', 25000.00),
+        ('Malibuca', '2024-05-19', 6, 'Fortnite Championship Series: Major 2 2024 - Grand Finals', 'EU', 25000.00),
+        ('Malibuca', '2023-06-04', 1, 'DreamHack Dallas 2023', 'Global (Third-Party Event)', 22500.00),
+        ('Malibuca', '2023-06-18', 1, 'DreamHack Summer 2023', 'Global (Third-Party Event)', 22500.00),
+        ('Malibuca', '2024-08-11', 4, 'Esports World Cup 2024', 'Global (Third-Party Event)', 20000.00),
     ]
 
     cursor.executemany('''

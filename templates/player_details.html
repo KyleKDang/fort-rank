@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block main %}
+    <script src="../static/js/scripts.js"></script>
     <h1 class="mb-4">{{ player['username'] }}'s Details</h1>
 
     <div class="mb-4">
@@ -19,6 +20,17 @@
     </div>
 
     <h2 style="margin-top: 50px;">Best Placements</h2>
+    <form action="/player/{{ player['username'] }}" method="post" class="mb-4" style="display: flex; align-items: center;">
+        <div class="form-group" style="display: flex; align-items: center; margin-right: 10px; white-space: nowrap;">
+            <label for="sort_by" class="form-label" style="margin-right: 10px;"><strong>Sort By:</strong></label>
+            <select id="sort_by" name="sort_by" class="form-control" style="width: auto;" onchange="this.form.submit()">
+                <option value="placement_rank" {% if sort_by == 'placement_rank' %}selected{% endif %}>Placement</option>
+                <option value="earnings" {% if sort_by == 'earnings' %}selected{% endif %}>Earnings</option>
+                <option value="date_newest" {% if sort_by == 'date_newest' %}selected{% endif %}>Date - Most Recent</option>
+                <option value="date_oldest" {% if sort_by == 'date_oldest' %}selected{% endif %}>Date - Oldest</option>
+            </select>
+        </div>
+    </form>
     <table class="table table-striped">
         <thead>
             <tr>

@@ -5,9 +5,17 @@ window.addEventListener('beforeunload', function () {
 window.addEventListener('load', function () {
     const scrollPosition = sessionStorage.getItem('scrollPosition');
     if (scrollPosition) {
-        window.scrollTo(0, parseInt(scrollPosition, 10));
+        window.scrollTo({
+            top: parseInt(scrollPosition, 10),
+            left: 0,
+            behavior: 'instant'
+        });
         sessionStorage.removeItem('scrollPosition');
     }
 });
+
+console.log("Scroll restoration script executed");
+
+
 
 

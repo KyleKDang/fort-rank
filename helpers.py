@@ -46,11 +46,11 @@ def calculate_all_time(placements):
 
 def calculate_by_year(placements, selected_year):
     region_multipliers = {
-        'NAW': 0.75,
+        'NAW': 0.5,
         'NAE': 1.0,
         'NA': 1.0,
         'EU': 1.2,
-        'Global': 1.6,
+        'Global': 5 if selected_year == "2019" else 1.6,
         'Global (Third-Party Event)': 0.8
     }
 

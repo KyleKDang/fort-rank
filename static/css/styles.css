@@ -8,3 +8,9 @@
     object-fit: cover;
     margin-bottom: 25px;
 }
+
+.centered-header {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
