@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block main %}
-    <script src="static/js/scripts.js"></script>
+    {% if reset_scroll %}
+        <script src="static/js/scripts.js"></script>
+    {% endif %}
     <h1 class="mb-4">Player Rankings</h1>
 
     <form action="/" method="post" class="mb-4" style="display: flex; align-items: center;">

@@ -56,6 +56,7 @@ def index():
 @app.route('/player/<username>', methods=["GET", "POST"])
 def player_details(username):
     if request.method == "POST":
+        reset_scroll = False
         sort_by = request.form.get('sort_by')
         if sort_by == "placement_rank":
             formatted_sort_by = sort_by
@@ -70,13 +71,14 @@ def player_details(username):
             formatted_sort_by = sort_by
             direction = "DESC"
     else:
+        reset_scroll = True
         sort_by = "placement_rank"
         formatted_sort_by = "placement_rank"
         direction = "ASC"
 
         
     player, placements = get_player_details(username, formatted_sort_by, direction)
-    return render_template('player_details.html', player=player, placements=placements, sort_by=sort_by)
+    return render_template('player_details.html', player=player, placements=placements, sort_by=sort_by, reset_scroll=reset_scroll)
 
 
 def get_player_details(username, sort_by, direction):
