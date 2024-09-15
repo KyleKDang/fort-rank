@@ -99,8 +99,16 @@ def get_player_details(username, sort_by, direction):
             "image": f"../static/images/{player_row[6]}",
         }
 
+        if sort_by == "placement_rank":
+            sort_by_2 = "earnings"
+            direction_2 = "DESC"
+        else:
+            sort_by_2 = "placement_rank"
+            direction_2 = "ASC"
+
         query = f'''
-            SELECT * FROM placements WHERE player_name = ? ORDER BY {sort_by} {direction}
+            SELECT * FROM placements WHERE player_name = ?
+            ORDER BY {sort_by} {direction}, placement_rank ASC, earnings DESC, placement_date DESC
         '''
         cursor.execute(query, (username,))
         placement_rows = cursor.fetchall()
