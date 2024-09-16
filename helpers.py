@@ -23,12 +23,12 @@ def get_ordinal(number):
 
 def calculate_all_time(placements):
     region_multipliers = {
-        'NAW': 0.75,
+        'NAW': 0.5,
         'NAE': 1.0,
         'NA': 1.0,
-        'EU': 1.25,
-        'Global': 1.6,
-        'Global (Third-Party Event)': 0.8
+        'EU': 1.2,
+        'Global': 2,
+        'Global (Third-Party Event)': 0.25
     }
 
     total = 0
@@ -39,7 +39,10 @@ def calculate_all_time(placements):
 
         multiplier = region_multipliers.get(region, 1.0)
 
-        total += (100 - (rank - 1) * 10) * multiplier
+        if rank == 1:
+            total += 200 * multiplier
+        else:
+            total += (100 - (rank - 1) * 10) * multiplier
 
     return total
 
@@ -50,8 +53,8 @@ def calculate_by_year(placements, selected_year):
         'NAE': 1.0,
         'NA': 1.0,
         'EU': 1.2,
-        'Global': 5 if selected_year == "2019" else 1.6,
-        'Global (Third-Party Event)': 0.8
+        'Global': 3.0,
+        'Global (Third-Party Event)': 0
     }
 
     total = 0
@@ -69,6 +72,9 @@ def calculate_by_year(placements, selected_year):
 
             multiplier = region_multipliers.get(region, 1.0)
 
-            total += (100 - (rank - 1) * 10) * multiplier
+            if rank == 1:
+                total += 200 * multiplier
+            else:
+                total += (100 - (rank - 1) * 10) * multiplier
 
     return total

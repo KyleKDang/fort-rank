@@ -23,8 +23,7 @@ def create_database():
             y_2023 INTEGER,
             y_2022 INTEGER,
             y_2021 INTEGER,
-            y_2020 INTEGER,
-            y_2019 INTEGER
+            y_2020 INTEGER
         )
     ''')
 
@@ -42,6 +41,9 @@ def create_database():
         ('Veno', 'Harry Pearson', '2004-11-26', 'United Kingdom 🇬🇧', 824425.96, 'veno.png'),
         ('EpikWhale', 'Shane Cotton', '2002-08-03', 'United States 🇺🇸', 1838487.32, 'epikwhale.png'),
         ('Malibuca', 'Danila Yakovenko', '2005-10-14', 'Russia 🇷🇺', 973063.64, 'malibuca.png'),
+        ('Acorn', 'Abdullah Akhras', '2004-06-14', 'Canada 🇨🇦', 683827.39, 'acorn.png'),
+        ('Cold', 'Joshua Butler', '2007-05-23', 'United States 🇺🇸', 575175.00, 'cold.png'),
+        ('merstachhh', 'Andrej Piratov', '2007-03-27', 'Latvia 🇱🇻', 656756.78, 'merstachhh.png'),
     ]
 
     cursor.executemany('''
@@ -99,7 +101,7 @@ def create_database():
         ('mero', '2023-05-14', 2, 'Fortnite Championship Series: Major 2 - Grand Finals', 'NA', 47500.00),
         ('mero', '2021-10-31', 1, 'Fortnite Championship Series: Chapter 2 Season 8 - Grand Finals', 'NAE', 45000.00),
         ('mero', '2022-05-29', 3, 'Fortnite Championship Series: Chapter 3 Season 2 - Grand Finals', 'NAE', 35000.00),
-        ('mero', '2020-11-01', 2, 'Fortnite Championship Series: Chapter 2 Season 4 - Grand Finals', 'NAE', 22000.00),
+        ('mero', '2020-11-01', 1, 'Fortnite Championship Series: Chapter 2 Season 4 - Grand Finals', 'NAE', 22000.00),
         ('mero', '2021-03-14', 4, 'Fortnite Championship Series: Chapter 2 Season 5 - Grand Finals', 'NAE', 20000.00),
         ('TaySon', '2021-11-21', 1, 'Fortnite Championship Series: Grand Royale 2021', 'EU', 200000.00),
         ('TaySon', '2021-06-26', 1, 'Fortnite Championship Series: All-Star Showdown 2021 - Solo Final', 'EU', 150000.00),
@@ -120,7 +122,7 @@ def create_database():
         ('Queasy', '2023-05-14', 1, 'Fortnite Championship Series: Major 2 2023 - Grand Finals', 'EU', 100000.00),
         ('Queasy', '2021-11-21', 3, 'Fortnite Championship Series: Grand Royale 2021', 'EU', 90000.00),
         ('Queasy', '2022-08-14', 3, 'Fortnite Championship Series: Chapter 3 Season 3', 'EU', 75000.00),
-        ('Queasy', '2022-11-13', 2, 'Fortnite Champions Series: Invitational 2022', 'EU', 70000.00),
+        ('Queasy', '2022-11-13', 2, 'Fortnite Champions Series: Invitational 2022', 'Global', 70000.00),
         ('Queasy', '2024-02-25', 2, 'Fortnite Championship Series: Major 1 2024 - Grand Finals', 'EU', 60000.00),
         ('Queasy', '2023-03-05', 4, 'Fortnite Championship Series: Major 1 2023', 'EU', 40000.00),
         ('Queasy', '2020-04-19', 2, 'Fortnite Championship Series: Chapter 2 Season 2 - Grand Finals', 'EU', 30000.00),
@@ -130,7 +132,7 @@ def create_database():
         ('Kami', '2023-07-09', 1, 'Gamers8 2023', 'Global (Third-Party Event)', 280000.00),
         ('Kami', '2021-11-21', 2, 'Fortnite Championship Series: Grand Royale 2021', 'EU', 150000.00),
         ('Kami', '2021-10-31', 1, 'Fortnite Championship Series: Chapter 2 Season 8 - Grand Finals', 'EU', 100000.00),
-        ('Kami', '2021-11-13', 1, 'Fortnite Champions Series: Invitational 2022', 'Global', 100000.00),
+        ('Kami', '2022-11-13', 1, 'Fortnite Champions Series: Invitational 2022', 'Global', 100000.00),
         ('Kami', '2022-05-29', 5, 'Fortnite Championship Series: Chapter 3 Season 2 - Grand Finals', 'EU', 50000.00),
         ('Kami', '2024-05-19', 3, 'Fortnite Championship Series: Major 2 2024 - Grand Finals', 'EU', 50000.00),
         ('Kami', '2022-07-31', 3, 'Gamers8 2022', 'Global (Third-Party Event)', 50000.00),
@@ -140,10 +142,11 @@ def create_database():
         ('Kami', '2023-05-14', 5, 'Fortnite Championship Series: Major 2 2023 - Grand Finals', 'EU', 30000.00),
         ('Kami', '2020-04-19', 5, 'Fortnite Championship Series: Chapter 2 Season 2 - Grand Finals', 'EU', 20000.00),
         ('Kami', '2020-11-01', 4, 'Fortnite Championship Series: Chapter 2 Season 4 - Grand Finals', 'EU', 20000.00),
+        ('Kami', '2022-06-19', 2, 'DreamHack Summer 2022', 'Global (Third-Party Event)', 6000.00),
         ('Setty', '2023-10-15', 2, 'Fortnite Champion Series: Global Championship 2023', 'Global', 325000.00),
         ('Setty', '2021-11-21', 2, 'Fortnite Championship Series: Grand Royale 2021', 'EU', 150000.00),
         ('Setty', '2021-10-31', 1, 'Fortnite Championship Series: Chapter 2 Season 8 - Grand Finals', 'EU', 100000.00),
-        ('Setty', '2021-11-13', 1, 'Fortnite Champions Series: Invitational 2022', 'Global', 100000.00),
+        ('Setty', '2022-11-13', 1, 'Fortnite Champions Series: Invitational 2022', 'Global', 100000.00),
         ('Setty', '2022-05-29', 5, 'Fortnite Championship Series: Chapter 3 Season 2 - Grand Finals', 'EU', 50000.00),
         ('Setty', '2024-05-19', 3, 'Fortnite Championship Series: Major 2 2024 - Grand Finals', 'EU', 50000.00),
         ('Setty', '2022-07-31', 3, 'Gamers8 2022', 'Global (Third-Party Event)', 50000.00),
@@ -185,7 +188,7 @@ def create_database():
         ('Veno', '2022-11-13', 2, 'Fortnite Champions Series: Invitational 2022', 'Global', 70000.00),
         ('Veno', '2023-03-05', 4, 'Fortnite Championship Series: Major 1 2023 - Grand Finals', 'EU', 40000.00),
         ('Veno', '2021-09-05', 5, 'Fortnite Championship Series: Chapter 2 Season 7 - Grand Finals', 'EU', 35000.00),
-        ('Veno', '2024-07-28', 4, 'Fortnite Championship Series: Major 3 2024 - Grand Finals', 'EU', 30000.00),
+        ('Veno', '2024-07-28', 4, 'Fortnite Championship Series: Major 3 2024 - Grand Finals', 'NA', 30000.00),
         ('EpikWhale', '2019-07-28', 3, 'Fortnite World Cup Finals 2019 - Solo', 'Global', 1200000.00),
         ('EpikWhale', '2022-07-31', 1, 'Gamers8 2022', 'Global (Third-Party Event)', 125000.00),
         ('EpikWhale', '2023-07-09', 6, 'Gamers8 2023', 'Global (Third-Party Event)', 40000.00),
@@ -216,6 +219,44 @@ def create_database():
         ('Malibuca', '2023-06-04', 1, 'DreamHack Dallas 2023', 'Global (Third-Party Event)', 22500.00),
         ('Malibuca', '2023-06-18', 1, 'DreamHack Summer 2023', 'Global (Third-Party Event)', 22500.00),
         ('Malibuca', '2024-08-11', 4, 'Esports World Cup 2024', 'Global (Third-Party Event)', 20000.00),
+        ('Acorn', '2024-02-25', 1, 'Fortnite Championship Series: Major 1 2024 - Grand Finals', 'NA', 70000.00),
+        ('Acorn', '2023-10-15', 7, 'Fortnite Champion Series: Global Championship 2023', 'Global', 60000.00),
+        ('Acorn', '2023-03-06', 1, 'Fortnite Championship Series: Major 1 2023 - Grand Finals', 'NA', 60000.00),
+        ('Acorn', '2021-03-14', 1, 'Fortnite Championship Series: Chapter 2 Season 5 - Grand Finals', 'NAE', 50000.00),
+        ('Acorn', '2021-11-21', 3, 'Fortnite Championship Series: Grand Royale 2021', 'NAE', 42000.00),
+        ('Acorn', '2023-07-09', 6, 'Gamers8 2023', 'Global (Third-Party Event)', 40000.00),
+        ('Acorn', '2024-07-28', 3, 'Fortnite Championship Series: Major 3 2024 - Grand Finals', 'NA', 35000.00),
+        ('Acorn', '2022-05-29', 4, 'Fortnite Championship Series: Chapter 3 Season 2 - Grand Finals', 'NAE', 28000.00),
+        ('Acorn', '2024-05-19', 5, 'Fortnite Championship Series: Major 2 2024 - Grand Finals', 'NA', 25000.00),
+        ('Acorn', '2021-09-05', 5, 'Fortnite Championship Series: Chapter 2 Season 7 - Grand Finals', 'NAE', 18000.00),
+        ('Acorn', '2022-03-06', 6, 'Fortnite Championship Series: Chapter 3 Season 1 - Grand Finals', 'NAE', 16000.00),
+        ('Acorn', '2023-05-14', 6, 'Fortnite Championship Series: Major 2 2023 - Grand Finals', 'NA', 15000.00),
+        ('Acorn', '2023-08-13', 6, 'Fortnite Championship Series: Major 3 2023 - Grand Finals', 'NA', 15000.00),
+        ('Acorn', '2022-08-14', 7, 'Fortnite Championship Series: Chapter 3 Season 3 - Grand Finals', 'NAE', 12000.00),
+        ('Acorn', '2020-11-01', 5, 'Fortnite Championship Series: Chapter 2 Season 4 - Grand Finals', 'NAE', 9000.00),
+        ('Cold', '2024-08-11', 1, 'Esports World Cup 2024', 'Global (Third-Party Event)', 100000.00),
+        ('Cold', '2024-02-25', 1, 'Fortnite Championship Series: Major 1 2024 - Grand Finals', 'NA', 70000.00),
+        ('Cold', '2023-10-15', 7, 'Fortnite Champion Series: Global Championship 2023', 'Global', 60000.00),
+        ('Cold', '2022-11-13', 3, 'Fortnite Champions Series: Invitational 2022', 'Global', 60000.00),
+        ('Cold', '2023-03-06', 1, 'Fortnite Championship Series: Major 1 2023 - Grand Finals', 'NA', 60000.00),
+        ('Cold', '2022-05-29', 2, 'Fortnite Championship Series: Chapter 3 Season 2 - Grand Finals', 'NAE', 45000.00),
+        ('Cold', '2024-07-28', 3, 'Fortnite Championship Series: Major 3 2024 - Grand Finals', 'NA', 35000.00),
+        ('Cold', '2024-05-19', 5, 'Fortnite Championship Series: Major 2 2024 - Grand Finals', 'NA', 25000.00),
+        ('Cold', '2022-03-06', 5, 'Fortnite Championship Series: Chapter 3 Season 1 - Grand Finals', 'NAE', 20000.00),
+        ('Cold', '2021-11-21', 5, 'Fortnite Championship Series: Grand Royale 2021', 'NAE', 18000.00),
+        ('Cold', '2021-10-13', 6, 'Fortnite Championship Series: Chapter 2 Season 8 - Grand Finals', 'NAE', 15000.00),
+        ('Cold', '2023-05-14', 6, 'Fortnite Championship Series: Major 2 2023 - Grand Finals', 'NA', 15000.00),
+        ('Cold', '2023-08-13', 6, 'Fortnite Championship Series: Major 3 2023 - Grand Finals', 'NA', 15000.00),
+        ('merstachhh', '2022-08-14', 2, 'Fortnite Championship Series: Chapter 3 Season 3 - Grand Finals', 'EU', 100000.00),
+        ('merstachhh', '2023-03-05', 1, 'Fortnite Championship Series: Major 1 2023 - Grand Finals', 'EU', 100000.00),
+        ('merstachhh', '2024-02-25', 1, 'Fortnite Championship Series: Major 1 2024 - Grand Finals', 'EU', 85000.00),
+        ('merstachhh', '2022-05-29', 4, 'Fortnite Championship Series: Chapter 3 Season 2 - Grand Finals', 'EU', 60000.00),
+        ('merstachhh', '2023-05-14', 2, 'Fortnite Championship Series: Major 2 2023 - Grand Finals', 'EU', 60000.00),
+        ('merstachhh', '2024-07-28', 4, 'Fortnite Championship Series: Major 3 2024 - Grand Finals', 'EU', 40000.00),
+        ('merstachhh', '2021-10-31', 7, 'Fortnite Championship Series: Chapter 2 Season 8 - Grand Finals', 'EU', 25000.00),
+        ('merstachhh', '2024-05-19', 6, 'Fortnite Championship Series: Major 2 2024 - Grand Finals', 'EU', 25000.00),
+        ('merstachhh', '2024-08-11', 4, 'Esports World Cup 2024', 'Global (Third-Party Event)', 20000.00),
+        ('merstachhh', '2022-07-31', 7, 'Gamers8 2022', 'Global (Third-Party Event)', 15000.00),
     ]
 
     cursor.executemany('''
@@ -235,7 +276,6 @@ def create_database():
         y_2022 = calculate_by_year(placements, "2022")
         y_2021 = calculate_by_year(placements, "2021")
         y_2020 = calculate_by_year(placements, "2020")
-        y_2019 = calculate_by_year(placements, "2019")
         cursor.execute('''
             UPDATE players
             SET all_time = ?,
@@ -243,10 +283,9 @@ def create_database():
                 y_2023 = ?,
                 y_2022 = ?,
                 y_2021 = ?,      
-                y_2020 = ?,      
-                y_2019 = ?       
+                y_2020 = ?     
             WHERE username = ?
-        ''', (all_time, y_2024, y_2023, y_2022, y_2021, y_2020, y_2019, username))
+        ''', (all_time, y_2024, y_2023, y_2022, y_2021, y_2020, username))
         
 
 
